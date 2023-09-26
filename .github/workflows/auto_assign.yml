@@ -1,0 +1,20 @@
+name: Auto Assign to Author
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  assign_to_author:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Assign issue to opener
+      run: |
+        issue="${{ github.event.issue.number }}"
+        author="${{ github.event.issue.user.login }}"
+        
+        gh api "repos/${{ github.repository }}/issues/$issue/assignees" \
+          -X POST \
+          -f "assignees[]=$author"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
