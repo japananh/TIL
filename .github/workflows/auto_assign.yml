@@ -10,11 +10,12 @@ jobs:
     steps:
     - name: Assign issue to opener
       run: |
-        issue="${{ github.event.issue.number }}"
-        author="${{ github.event.issue.user.login }}"
-        
-        gh api "repos/${{ github.repository }}/issues/$issue/assignees" \
-          -X POST \
-          -f "assignees[]=$author"
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ISSUE_NUMBER="${{ github.event.issue.number }}"
+        AUTHOR="${{ github.event.issue.user.login }}"
+
+        curl -s \
+             -X POST \
+             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+             -H "Accept: application/vnd.github.v3+json" \
+             "https://api.github.com/repos/${{ github.repository }}/issues/${ISSUE_NUMBER}/assignees" \
+             -d "{\"assignees\":[\"${AUTHOR}\"]}"
