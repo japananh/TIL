@@ -2,6 +2,7 @@ name: Auto Assign
 on: [push, pull_request]
 jobs:
   add-reviewers-assignees:
+    permissions: write-all
     name: Auto Add Reviewer and Assignees
     runs-on: ubuntu-latest
     steps:
