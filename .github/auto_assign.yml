@@ -5,7 +5,7 @@ addReviewers: true
 # Set to author to set pr creator as assignee
 addAssignees: author
 
-# A list of reviewers to be added to pull requests (GitHub user name)
+# A list of reviewers to be added to pull requests (GitHub username)
 reviewers:
   - japananh
 
@@ -18,7 +18,7 @@ numberOfReviewers: 0
 #   - assigneeA
 
 # A number of assignees to add to the pull request
-# Set to 0 to add all of the assignees.
+# Set to 0 to add all the assignees.
 # Uses numberOfReviewers if unset.
 # numberOfAssignees: 2
 
