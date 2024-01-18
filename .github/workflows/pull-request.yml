@@ -12,4 +12,4 @@ jobs:
     steps:
       - uses: kentaro-m/auto-assign-action@v1.2.6
         with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
